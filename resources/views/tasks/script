@@ -1,0 +1,11 @@
+SET @row = 0;
+INSERT INTO tasks (title, description, is_completed, created_at, updated_at)
+SELECT
+    CONCAT('Task ', @row:=@row+1),
+    CONCAT('Description for task ', @row),
+    FLOOR(RAND() * 2),
+    NOW(),
+    NOW()
+FROM
+    information_schema.columns
+LIMIT 100;
